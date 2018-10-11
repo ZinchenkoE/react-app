@@ -7,8 +7,7 @@ class PwdRecoveryPage extends Component {
 
         this.state = {
             fd: {
-                email: '777@mail.ru',
-                // email: 'qwe@qwe',
+                email: '',
             },
             err: {
                 email: null

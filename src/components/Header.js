@@ -2,18 +2,12 @@ import React, { Component } from "react";
 import {logout, showMsg} from "../actions";
 
 class Header extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        };
-    }
-
     render() {
         return (
             <div className="navbar navbar-expand-md navbar-dark bg-indigo fixed-top">
                 <div className="navbar-brand">
                     <a href="/" className="d-inline-block">
-                        <img src="/img/logo-min.png" alt="" />
+                        <img src="https://ezi.co.ua/img/logo-yellow.svg" alt="" />
                     </a>
                 </div>
 
@@ -37,7 +31,7 @@ class Header extends Component {
 
                     <span className="navbar-text ml-md-3">
                         <span className="badge badge-mark border-orange-300 mr-2" />
-                        Доброго дня, Марія!
+                        Доброго дня, Username!
                     </span>
 
                     <ul className="navbar-nav ml-md-auto">

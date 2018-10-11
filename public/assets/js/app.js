@@ -7,7 +7,7 @@
 // Setup module
 // ------------------------------
 
-window._App = function () {
+window.__plugins = function () {
 
 
     //
@@ -546,12 +546,12 @@ window._App = function () {
 
         // Initialize core
         initCore: function() {
-            _App.initSidebars();
-            _App.initNavigations();
-            _App.initComponents();
-            _App.initCardActions();
-            _App.initDropdownSubmenu();
-            _App.initHeaderElementsToggle();
+            __plugins.initSidebars();
+            __plugins.initNavigations();
+            __plugins.initComponents();
+            __plugins.initCardActions();
+            __plugins.initDropdownSubmenu();
+            __plugins.initHeaderElementsToggle();
         }
     }
 }();
@@ -559,17 +559,6 @@ window._App = function () {
 
 // Initialize module
 // ------------------------------
-
-// When content is loaded
-// document.addEventListener('DOMContentLoaded', function() {
-//     _App.initBeforeLoad();
-//     _App.initCore();
-// });
-//
-// // When page is fully loaded
-// window.addEventListener('load', function() {
-//     _App.initAfterLoad();
-// });
 
 Noty.overrideDefaults({
     theme: 'limitless',

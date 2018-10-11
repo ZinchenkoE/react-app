@@ -1,18 +1,17 @@
 import React, {Component} from "react";
-import Sidebar from "../components/Sidebar";
+import {Route, Switch} from "react-router";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Sidebar from "../components/Sidebar";
 import PageHeader from "./PageHeader";
-import Conversations from "./Conversations";
-import Page from "./Page";
-import {Route, Switch} from "react-router";
-import BanksPage from "./BanksPage";
+import MainPage from "./MainPage";
+import UsersPage from "./UsersPage";
 
 class Dashboard extends Component {
     componentDidMount() {
-        window._App.initBeforeLoad();
-        window._App.initCore();
-        window._App.initAfterLoad();
+        window.__plugins.initBeforeLoad();
+        window.__plugins.initCore();
+        window.__plugins.initAfterLoad();
     }
 
     render() {
@@ -28,9 +27,8 @@ class Dashboard extends Component {
                         <PageHeader />
 
                         <Switch>
-                            <Route path='/dashboard' exact   component={Conversations} />
-                            <Route path='/dashboard/banks'   component={BanksPage} />
-                            <Route path='/dashboard/page'    component={Page} />
+                            <Route path='/dashboard' exact   component={MainPage} />
+                            <Route path='/dashboard/users'   component={UsersPage} />
                         </Switch>
 
                         <Footer />

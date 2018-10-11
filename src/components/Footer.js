@@ -16,7 +16,7 @@ class Footer extends Component {
                     <ul className="navbar-nav ml-lg-auto">
                         <li className="nav-item">
                             <a href="https://google.com/" className="navbar-nav-link" target="_blank" rel="noopener noreferrer">
-                                <i className="icon-lifebuoy mr-2" /> Поддержка
+                                <i className="icon-lifebuoy mr-2" /> Підтримка
                             </a>
                         </li>
                     </ul>

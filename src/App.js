@@ -9,15 +9,6 @@ import PwdRecoveryPage from "./views/PwdRecoveryPage";
 import SuccessRecoveryPage from "./views/SuccessRecoveryPage";
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
-    componentDidMount() {
-
-    }
-
     render() {
         console.log(this.props);
         const token = this.props.token;
