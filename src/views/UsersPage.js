@@ -1,15 +1,14 @@
 import React, {Component} from "react";
+import {connect} from "react-redux";
+import {getUsers, showUserConfirmModal, showUserModal} from "../actions";
 
 class UsersPage extends Component {
     constructor(props) {
         super(props);
+    }
 
-        this.users = [
-            {firstname: 'Евгений',  lastname: 'Зинченко', email: 'zinchenko.evgeniy@gmail.com'},
-            {firstname: 'Виктория', lastname: 'Иванова',  email: 'vic.iva@gmail.com'},
-            {firstname: 'Ольга',    lastname: 'Петровна', email: 'olga.pet@gmail.com'},
-            {firstname: 'Василий',  lastname: 'Пупкин',   email: 'vas.pupkin@gmail.com'},
-        ];
+    componentDidMount() {
+        getUsers();
     }
 
     render() {
@@ -18,6 +17,7 @@ class UsersPage extends Component {
                 <div className="card">
                     <div className="card-header header-elements-inline">
                         <h5 className="card-title">Користувачі</h5>
+                        <button className="btn btn-primary legitRipple" onClick={() => showUserModal({})}>Новий користувач</button>
                     </div>
 
                     <div className="table-responsive">
@@ -28,12 +28,12 @@ class UsersPage extends Component {
                                 <th>Ім'я</th>
                                 <th>Прізвище</th>
                                 <th>E-mail</th>
-                                <th></th>
+                                <th />
                             </tr>
                             </thead>
                             <tbody>
                             {
-                                this.users.map((item, i) => (
+                                this.props.users.map((item, i) => (
                                     <tr key={i}>
                                         <td>{i+1}</td>
                                         <td>{item.firstname}</td>
@@ -41,14 +41,11 @@ class UsersPage extends Component {
                                         <td>{item.email}</td>
                                         <td className="text-right">
                                             <div className="list-icons">
-                                                <a className="list-icons-item">
+                                                <a className="list-icons-item" onClick={() => showUserModal(item)}>
                                                     <i className="icon-pencil7" />
                                                 </a>
-                                                <a className="list-icons-item">
+                                                <a className="list-icons-item" onClick={() => showUserConfirmModal(item)}>
                                                     <i className="icon-trash" />
-                                                </a>
-                                                <a className="list-icons-item">
-                                                    <i className="icon-cog6" />
                                                 </a>
                                             </div>
                                         </td>
@@ -64,4 +61,4 @@ class UsersPage extends Component {
     }
 }
 
-export default UsersPage;
+export default connect(state => state)(UsersPage);

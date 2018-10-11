@@ -1,11 +1,15 @@
 import React, {Component} from "react";
 import {Route, Switch} from "react-router";
+import {connect} from "react-redux";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Sidebar from "../components/Sidebar";
 import PageHeader from "./PageHeader";
 import MainPage from "./MainPage";
 import UsersPage from "./UsersPage";
+import UserModal from "../components/UserModal";
+import ConfirmModal from "../components/ConfirmModal";
+import {hideUserConfirmModal, hideUserModal, saveUser, showUserConfirmModal} from "../actions";
 
 class Dashboard extends Component {
     componentDidMount() {
@@ -34,9 +38,26 @@ class Dashboard extends Component {
                         <Footer />
                     </div>
                 </div>
+
+                {this.props.userForModal &&
+                <UserModal
+                    item={this.props.userForModal}
+                    onCloseModal={() => hideUserModal()}
+                    onSubmit={item => saveUser(item, () => hideUserModal())}
+                />
+                }
+
+                {this.props.userForConfirmModal &&
+                <ConfirmModal
+                    title="Remove Bookmark?"
+                    item={this.props.userForConfirmModal}
+                    onCloseModal={() => hideUserConfirmModal()}
+                    onSubmit={item => showUserConfirmModal(item)}
+                />
+                }
             </div>
         );
     }
 }
 
-export default Dashboard;
+export default connect(state => state)(Dashboard);

@@ -1,10 +1,6 @@
 import store from "./store";
 import { push } from 'connected-react-router'
 
-
-
-// const API_HOST = 'https://api.prostir.tk';
-// const API_HOST = 'http://localhost';
 const API_HOST = 'http://test-api.ezi.co.ua';
 
 const ajax = (method, path, data, cb, err_cb) => {
@@ -22,6 +18,11 @@ const ajax = (method, path, data, cb, err_cb) => {
     x.send(json);
 };
 
+const errorHandler = err => {
+    console.log(err);
+    showMsg('error', err);
+};
+
 
 
 export function login(data, err_cb) {
@@ -30,17 +31,13 @@ export function login(data, err_cb) {
             if(res.token) {
                 store.dispatch({type: 'SET_TOKEN', data: res.token });
                 data.remember && localStorage.setItem('token', res.token);
-                // goTo('/dashboard');
 
             } else {
                 err_cb && err_cb(res.errors);
             }
 
         },
-        err => {
-            console.log(err);
-            showMsg('error', err);
-        },
+        errorHandler,
     );
 }
 
@@ -60,10 +57,7 @@ export function recoveryPassword(data, err_cb) {
                 err_cb && err_cb(res.errors);
             }
         },
-        err => {
-            console.log(err);
-            showMsg('error', err);
-        },
+        errorHandler,
     );
 }
 
@@ -73,4 +67,72 @@ export function showMsg(type, text = '') {
 
 export function goTo(path) {
     store.dispatch(push(path))
+}
+
+/** _________ User _________ **/
+
+export function getUsers() {
+    ajax('GET', '/users/get', null,
+        res => {
+            store.dispatch({type: 'SET_USERS', data: res});
+        },
+        errorHandler,
+    );
+}
+
+export function showUserModal(data) {
+    store.dispatch({type: 'SET_ITEM_FOR_USER_MODAL', data});
+}
+
+export function hideUserModal() {
+    store.dispatch({type: 'SET_ITEM_FOR_USER_MODAL', data: null});
+}
+
+export function showUserConfirmModal(data) {
+    store.dispatch({type: 'SET_USER_FOR_CONFIRM_MODAL', data});
+}
+
+export function hideUserConfirmModal() {
+    store.dispatch({type: 'SET_USER_FOR_CONFIRM_MODAL', data: null});
+}
+
+export function addUser(data, cb) {
+    ajax('POST', '/users/add', data,
+        res => {
+            if(res.status === 'success') cb();
+        },
+        errorHandler,
+    );
+}
+
+export function updateUser(data, cb) {
+    ajax('POST', '/users/update', data,
+        res => {
+            if(res.status === 'success') cb();
+        },
+        errorHandler,
+    );
+}
+
+export function removeUser(data, cb) {
+    ajax('POST', '/users/remove', data,
+        res => {
+            if(res.status === 'success') cb();
+        },
+        errorHandler,
+    );
+}
+
+export function saveUser(item, cb) {
+    const users = store.getState().storage.users;
+    const index = users.map(i => i.id).indexOf(item.id);
+
+    if(users[index]) {
+
+    } else {
+        addUser(item, () => {
+            getUsers();
+            cb();
+        });
+    }
 }
