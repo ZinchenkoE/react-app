@@ -124,7 +124,7 @@ export function removeUser(data, cb) {
 }
 
 export function saveUser(item, cb) {
-    const users = store.getState().storage.users;
+    const users = store.getState().users;
     const index = users.map(i => i.id).indexOf(item.id);
 
     if(users[index]) {

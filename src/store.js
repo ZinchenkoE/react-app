@@ -22,7 +22,6 @@ function mainReducer(state, action) {
         case 'SET_ITEM_FOR_USER_MODAL':
             return {...state, userForModal: action.data};
 
-
         case 'SET_USER_FOR_CONFIRM_MODAL':
             return {...state, userForConfirmModal: action.data};
 
