@@ -1,0 +1,62 @@
+/*_____scrollbar________________________________________________________________________________________________________*/
+::-webkit-scrollbar-button {
+  background-repeat: no-repeat;
+  width: 0;
+  height: 0; }
+
+::-webkit-scrollbar-track {
+  background-color: #ecedee;
+  opacity: .5; }
+
+::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  background-color: #949494;
+  opacity: .5; }
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #2f4050; }
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px; }
+
+/*____________________________________________________________________________________________________________________*/
+#root, #app, #dashboard {
+  min-height: 100vh;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex: 1;
+  flex: 1; }
+
+a {
+  cursor: pointer !important;
+  user-select: none; }
+
+.sidebar-user-material .sidebar-user-material-body {
+  background: url(/img/bg1.jpg) center/cover no-repeat; }
+
+.bg-indigo {
+  background-color: #004a91; }
+
+.navbar-dark .navbar-nav-link {
+  color: #dee26a; }
+
+.ezi-lang-dropdown {
+  min-width: 60px; }
+  .ezi-lang-dropdown .dropdown-content-body {
+    padding: 5px; }
+  .ezi-lang-dropdown .media {
+    margin-top: 0.15rem;
+    justify-content: center; }
+    .ezi-lang-dropdown .media:hover {
+      cursor: pointer;
+      background: #ebebeb; }
+
+.uniform-checker input:checked + span:after, .uniform-choice input:checked + span:after {
+  opacity: 1; }
+
+#noty_layout__topRight {
+  top: 4.25rem; }
+
+/*# sourceMappingURL=index.css.map */
