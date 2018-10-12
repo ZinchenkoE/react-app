@@ -128,6 +128,10 @@ export function saveUser(item, cb) {
     const index = users.map(i => i.id).indexOf(item.id);
 
     if(users[index]) {
+        updateUser(item, () => {
+            getUsers();
+            cb();
+        });
 
     } else {
         addUser(item, () => {

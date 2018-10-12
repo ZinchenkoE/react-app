@@ -9,7 +9,7 @@ import MainPage from "./MainPage";
 import UsersPage from "./UsersPage";
 import UserModal from "../components/UserModal";
 import ConfirmModal from "../components/ConfirmModal";
-import {hideUserConfirmModal, hideUserModal, saveUser, showUserConfirmModal} from "../actions";
+import {getUsers, hideUserConfirmModal, hideUserModal, removeUser, saveUser} from "../actions";
 
 class Dashboard extends Component {
     componentDidMount() {
@@ -52,7 +52,7 @@ class Dashboard extends Component {
                     title="Remove Bookmark?"
                     item={this.props.userForConfirmModal}
                     onCloseModal={() => hideUserConfirmModal()}
-                    onSubmit={item => showUserConfirmModal(item)}
+                    onSubmit={item => removeUser(item, () => { hideUserConfirmModal(); getUsers(); })}
                 />
                 }
             </div>

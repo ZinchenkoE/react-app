@@ -12,7 +12,7 @@ class UserModal extends Component {
                                 <button type="button" className="close" onClick={() => this.props.onCloseModal()}>×</button>
                             </div>
                             <div className="modal-body">
-                                Ви впевнені?
+                                Ви впевнені, що хочете видалити "{this.props.item.firstname} {this.props.item.lastname}"?
                             </div>
 
                             <div className="modal-footer">
