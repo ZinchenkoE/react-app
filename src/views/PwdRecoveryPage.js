@@ -15,10 +15,6 @@ class PwdRecoveryPage extends Component {
         };
     }
 
-    componentDidMount() {
-        console.log(this.props);
-    }
-
     render() {
         const {fd, err} = this.state;
 

@@ -25,6 +25,7 @@ const errorHandler = err => {
 
 
 
+/** _________ Auth _________ **/
 export function login(data, err_cb) {
     ajax('POST', '/auth', data,
         res => {
@@ -61,16 +62,9 @@ export function recoveryPassword(data, err_cb) {
     );
 }
 
-export function showMsg(type, text = '') {
-    new window.Noty({type, text}).show();
-}
 
-export function goTo(path) {
-    store.dispatch(push(path))
-}
 
 /** _________ User _________ **/
-
 export function getUsers() {
     ajax('GET', '/users/get', null,
         res => {
@@ -139,4 +133,15 @@ export function saveUser(item, cb) {
             cb();
         });
     }
+}
+
+
+
+/** _________ Other _________ **/
+export function showMsg(type, text = '') {
+    new window.Noty({type, text}).show();
+}
+
+export function goTo(path) {
+    store.dispatch(push(path))
 }

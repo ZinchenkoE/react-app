@@ -8,11 +8,8 @@ class LoginPage extends Component {
 
         this.state = {
             fd: {
-                email: '777@mail.ru',
-                password: '123456',
-
-                // email: '',
-                // password: '',
+                email: '',
+                password: '',
 
                 remember: false
             },
